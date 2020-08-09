@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uchat/components/TopBarView.dart';
 import 'package:uchat/pages/chat/chat.dart';
-import 'package:uchat/utils.dart';
 
 class Messages extends StatefulWidget {
   @override
@@ -29,7 +28,9 @@ class _MessagesState extends State<Messages>
           return InkWell(
             onTap: () {
               Navigator.of(context)
-                  .push(createPageSlideRoute(Chat(title: '这是一条信息 ${index}')));
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return Chat(title: '这是一条信息 ${index}');
+              }));
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),

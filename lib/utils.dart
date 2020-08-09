@@ -17,3 +17,26 @@ Route createPageSlideRoute(StatefulWidget page) {
     },
   );
 }
+
+class Loading {
+  static void hideLoading(BuildContext context) {
+    Navigator.of(context).pop();
+  }
+
+  static Future showLoading(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return Container(
+              color: Colors.black12,
+              child: Stack(
+                alignment: Alignment.center,
+                children: <Widget>[
+                  CircularProgressIndicator(
+                    backgroundColor: Colors.white12,
+                  )
+                ],
+              ));
+        });
+  }
+}

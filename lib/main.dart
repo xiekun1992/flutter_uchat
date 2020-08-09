@@ -1,5 +1,6 @@
+import 'package:cupertino_back_gesture/cupertino_back_gesture.dart';
 import 'package:flutter/material.dart';
-import 'package:uchat/pages/signin.dart';
+import 'package:uchat/pages/OneKeyLogin.dart';
 
 void main() {
   // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -16,27 +17,45 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // SystemChrome.setEnabledSystemUIOverlays([]);
     // SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-    return MaterialApp(
-      title: 'xchat',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: Signin(),
-    );
+    return BackGestureWidthTheme(
+
+        // specify desired width as fixed logical pixels value
+        // backGestureWidth: BackGestureWidth.fixed(200),
+
+        // or as a fraction of the screen width
+        backGestureWidth: BackGestureWidth.fraction(1 / 2),
+        child: MaterialApp(
+          title: 'xchat',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            pageTransitionsTheme: PageTransitionsTheme(
+              builders: {
+                // for Android - default page transition
+                TargetPlatform.android:
+                    CupertinoPageTransitionsBuilderCustomBackGestureWidth(),
+
+                // for iOS - one which considers ancestor BackGestureWidthTheme
+                TargetPlatform.iOS:
+                    CupertinoPageTransitionsBuilderCustomBackGestureWidth(),
+              },
+            ),
+            // This is the theme of your application.
+            //
+            // Try running your application with "flutter run". You'll see the
+            // application has a blue toolbar. Then, without quitting the app, try
+            // changing the primarySwatch below to Colors.green and then invoke
+            // "hot reload" (press "r" in the console where you ran "flutter run",
+            // or simply save your changes to "hot reload" in a Flutter IDE).
+            // Notice that the counter didn't reset back to zero; the application
+            // is not restarted.
+            primarySwatch: Colors.blue,
+            // This makes the visual density adapt to the platform that you run
+            // the app on. For desktop platforms, the controls will be smaller and
+            // closer together (more dense) than on mobile platforms.
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          home: OneKeyLogin(),
+        ));
   }
 }
 

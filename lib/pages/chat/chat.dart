@@ -10,8 +10,8 @@ class Chat extends StatefulWidget {
     // TODO: implement createState
     return _ChatState();
   }
-
 }
+
 class _ChatState extends State<Chat> {
   bool keyboardInput = true;
   bool showIcons = false;
@@ -22,9 +22,7 @@ class _ChatState extends State<Chat> {
         children: <Widget>[
           Container(
             height: 54,
-            decoration: BoxDecoration(
-              color: Colors.black12
-            ),
+            decoration: BoxDecoration(color: Colors.black12),
             child: Row(
               children: <Widget>[
                 Container(
@@ -42,52 +40,56 @@ class _ChatState extends State<Chat> {
                   ),
                 ),
                 Expanded(
-                  child: keyboardInput ? Container(
-                    margin: EdgeInsets.symmetric(vertical: 8),
-                    padding: EdgeInsets.symmetric(horizontal: 8),
-                    // padding: EdgeInsets.only(bottom: 10, left: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white70,
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      border: Border.all(
-                        width: 1,
-                        color: Colors.black26,
-                        style: BorderStyle.solid
-                      )
-                    ),
-                    child: TextField(
-                      decoration: InputDecoration.collapsed(
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none
-                          // borderSide: BorderSide(
-                            // style: BorderStyle.none
-                          // ),
+                  child: keyboardInput
+                      ? Container(
+                          margin: EdgeInsets.symmetric(vertical: 8),
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          // padding: EdgeInsets.only(bottom: 10, left: 10),
+                          decoration: BoxDecoration(
+                              color: Colors.white70,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                              border: Border.all(
+                                  width: 1,
+                                  color: Colors.black26,
+                                  style: BorderStyle.solid)),
+                          child: TextField(
+                            decoration: InputDecoration.collapsed(
+                                border: OutlineInputBorder(
+                                    borderSide: BorderSide.none
+                                    // borderSide: BorderSide(
+                                    // style: BorderStyle.none
+                                    // ),
+                                    ),
+                                hintText: '说点什么'),
+                            onTap: () {
+                              setState(() {
+                                showIcons = true;
+                              });
+                            },
+                          ),
+                        )
+                      : Container(
+                          margin: EdgeInsets.only(top: 8, bottom: 8, left: 8),
+                          decoration: BoxDecoration(
+                            color: Colors.white54,
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                          ),
+                          child: InkWell(
+                            child: Center(
+                              child: Text('按下说话，松开后发送'),
+                            ),
+                            onTap: () {
+                              print('ontap');
+                            },
+                            onTapDown: (TapDownDetails tapDownDetails) {
+                              print('ontapdown');
+                            },
+                            onTapCancel: () {
+                              print('ontapcancel');
+                            },
+                          ),
                         ),
-                        hintText: '说点什么'
-                      ),
-                      onTap: () {
-                        setState(() {
-                          showIcons = true;
-                        });
-                      },
-                    ),
-                  ) : Container(
-                    margin: EdgeInsets.only(top: 8, bottom: 8, left: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.white54,
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                    ),
-                    child: InkWell(
-                      child: Center(
-                        child: Text(
-                          '按下说话，松开后发送'
-                        ),
-                      ),
-                      onTap: () {print('ontap');},
-                      onTapDown: (TapDownDetails tapDownDetails) {print('ontapdown');},
-                      onTapCancel: () {print('ontapcancel');},
-                    ),
-                  ),
                 ),
                 Container(
                   width: 40,
@@ -119,13 +121,16 @@ class _ChatState extends State<Chat> {
               ],
             ),
           ),
-          showIcons ? Container(
-            height: 300,
-            child: Text('data'),
-          ) : SizedBox.shrink(),
+          showIcons
+              ? Container(
+                  height: 300,
+                  child: Text('data'),
+                )
+              : SizedBox.shrink(),
         ],
       );
     }
+
     // TODO: implement build
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -149,74 +154,79 @@ class _ChatState extends State<Chat> {
                   itemCount: 10,
                   itemBuilder: (context, index) {
                     return Container(
-                      padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
+                      padding: EdgeInsets.only(
+                          top: 10, left: 10, right: 10, bottom: 10),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: index % 2 == 0 ? MainAxisAlignment.start : MainAxisAlignment.end,
+                        mainAxisAlignment: index % 2 == 0
+                            ? MainAxisAlignment.start
+                            : MainAxisAlignment.end,
                         children: <Widget>[
-                          index % 2 == 0 ? ClipRRect(
-                            borderRadius: BorderRadius.all(Radius.circular(5)),
-                            child: Image(
-                              width: 50,
-                              height: 50,
-                              image: AssetImage('assets/images/hotel2.jpg'),
-                              fit: BoxFit.cover,
-                            ),
-                          ) : Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              Container(
-                                constraints: BoxConstraints(
-                                  maxWidth: 280
-                                ),
-                                margin: EdgeInsets.only(right: 10, top: 2),
-                                decoration: BoxDecoration(
-                                  color: Colors.lightGreen,
-                                  borderRadius: BorderRadius.all(Radius.circular(8))
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(12.0),
-                                  child: Text(
-                                    '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊',
-                                    style: TextStyle(
-                                      fontSize: 16
-                                    ),
+                          index % 2 == 0
+                              ? ClipRRect(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5)),
+                                  child: Image(
+                                    width: 50,
+                                    height: 50,
+                                    image:
+                                        AssetImage('assets/images/hotel2.jpg'),
+                                    fit: BoxFit.cover,
                                   ),
                                 )
-                              ),
-                            ],
-                          ),
-                          index % 2 == 0 ? Row(
-                            children: <Widget>[
-                              Container(
-                                constraints: BoxConstraints(
-                                  maxWidth: 280
+                              : Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    Container(
+                                        constraints:
+                                            BoxConstraints(maxWidth: 280),
+                                        margin:
+                                            EdgeInsets.only(right: 10, top: 2),
+                                        decoration: BoxDecoration(
+                                            color: Colors.lightGreen,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(8))),
+                                        child: Padding(
+                                          padding: EdgeInsets.all(12.0),
+                                          child: Text(
+                                            '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                        )),
+                                  ],
                                 ),
-                                margin: EdgeInsets.only(left: 10, top: 2),
-                                decoration: BoxDecoration(
-                                  color: Colors.white70,
-                                  borderRadius: BorderRadius.all(Radius.circular(8))
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(12.0),
-                                  child: Text(
-                                    '啊啊啊啊啊啊啊啊',
-                                    style: TextStyle(
-                                      fontSize: 16
-                                    ),
-                                  ),
+                          index % 2 == 0
+                              ? Row(
+                                  children: <Widget>[
+                                    Container(
+                                        constraints:
+                                            BoxConstraints(maxWidth: 280),
+                                        margin:
+                                            EdgeInsets.only(left: 10, top: 2),
+                                        decoration: BoxDecoration(
+                                            color: Colors.white70,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(8))),
+                                        child: Padding(
+                                          padding: EdgeInsets.all(12.0),
+                                          child: Text(
+                                            '啊啊啊啊啊啊啊啊',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                        )),
+                                  ],
                                 )
-                              ),
-                            ],
-                          ) : ClipRRect(
-                            borderRadius: BorderRadius.all(Radius.circular(5)),
-                            child: Image(
-                              width: 50,
-                              height: 50,
-                              image: AssetImage('assets/images/hotel2.jpg'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                              : ClipRRect(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5)),
+                                  child: Image(
+                                    width: 50,
+                                    height: 50,
+                                    image:
+                                        AssetImage('assets/images/hotel2.jpg'),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                         ],
                       ),
                     );
