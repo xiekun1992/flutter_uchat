@@ -16,7 +16,7 @@ class _MeState extends State<Me> {
     return Column(
       children: <Widget>[
         Container(
-          height: 200 + MediaQuery.of(context).padding.top,
+          height: 180 + MediaQuery.of(context).padding.top,
           color: Colors.blue,
           child: Stack(
             alignment: Alignment.bottomCenter,
@@ -74,12 +74,13 @@ class _MeState extends State<Me> {
         Expanded(
           child: ListView(
             children: <Widget>[
-              InkWell(
-                onTap: () {},
+              FlatButton(
+                onPressed: () {},
+                color: Colors.white,
+                padding: EdgeInsets.zero,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
                   height: 50,
-                  color: Colors.white70,
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
                     children: <Widget>[
                       Icon(Icons.settings),
@@ -95,6 +96,20 @@ class _MeState extends State<Me> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: FlatButton(
+                    onPressed: () {},
+                    color: Colors.red,
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                      '退出账号',
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    )),
+              )
             ],
           ),
         ),

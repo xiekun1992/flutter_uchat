@@ -34,6 +34,7 @@ dev_dependencies:
   flutter_native_splash: ^0.1.9
   webview_flutter: ^0.3.22+1
   cupertino_back_gesture: ^0.0.3
+  font_awesome_flutter: ^8.8.1
 
 flutter_native_splash:
   image: assets/images/hotel21.png

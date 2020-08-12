@@ -135,6 +135,15 @@ class _ChatState extends State<Chat> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+        ),
         title: Text(widget.title),
         elevation: 0,
       ),
